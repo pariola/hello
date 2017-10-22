@@ -90,6 +90,10 @@
                                 <div id="pythoncontainer" style="position: relative; width: 80px; height: 80px; display: table; margin: 0 auto;"></div>
                             <label data-toggle="tooltip" data-placement="top" title="General-purpose scripting language that is mainly used in scripting but can be used in other cases such as web development.">Python</label>
                         </div>
+                        <div class="col-sm-4 text-center">
+                            <div id="kotlincontainer" style="position: relative; width: 80px; height: 80px; display: table; margin: 0 auto;"></div>
+                        <label data-toggle="tooltip" data-placement="top" title="Statically language similar to Java.">Kotlin</label>
+                    </div>
                     </div>
 
                 </div>
@@ -105,7 +109,7 @@
             <div style="margin-top:20px;margin-left:20px">
                 <h4 style="font-weight:300;">
                     <a href="http://m.me/kolodotai/" target="_blank">kolo.ai</a> (ft.
-                    <a href="http://tife.pario.la">tife.pario.la</a>):</h4>
+                    <a href="http://tife.pario.la">tife.pario.la</a>)</h4>
                 <p>Your personal assitant in terms of savings.</p>
             </div>
             <div style="margin-top:20px;margin-left:20px">
@@ -119,7 +123,7 @@
             <h2 style="font-weight:300">projects (<span class="text-muted">client</span>) {</h2>
             <div style="margin-top:20px;margin-left:20px">
                 <h4 style="font-weight:300;">
-                    <a href="http://driverr.com.ng/" target="_blank">Driverr App</a>
+                    <a href="http://driverr.com.ng/" target="_blank">Driverr</a>
                 </h4>
                 <p>A car hiring service
                     <span class="text-muted">(like Uber)</span>
@@ -176,7 +180,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>© Blessing Pariola 2017/p>
+                    <p>© Blessing Pariola 2017</p>
                 </div>
                 <div class="col-md-6">
                     <div class="social-icons pull-right">
@@ -317,6 +321,7 @@
         phpbar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
         phpbar.text.style.fontSize = '2rem';
 
+
         var pythonbar = new ProgressBar.Circle(pythoncontainer, {
             color: '#aaa',
             // This has to be the same size as the maximum width to
@@ -346,12 +351,43 @@
         });
         pythonbar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
         pythonbar.text.style.fontSize = '2rem';
+  
+        var kotlinbar = new ProgressBar.Circle(kotlincontainer, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: { color: '#aaa', width: 1 },
+            to: { color: '#333', width: 4 },
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value);
+                }
+
+            }
+        });
+        kotlinbar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+        kotlinbar.text.style.fontSize = '2rem';
 
         androidbar.animate(0.98);
         javabar.animate(0.9);
         jsbar.animate(0.95);
         phpbar.animate(0.6);
         pythonbar.animate(0.75);
+        kotlinbar.animate(0.5);
     </script>
 </body>
 
