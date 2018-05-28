@@ -1,0 +1,144 @@
+body {
+  font-family: "Muli", "Source Sans Pro", sans-serif;
+}
+
+.main {
+  justify-content: center;
+  min-height: 100vh;
+  letter-spacing: 0.1px;
+  color: #32465a;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  -webkit-font-smoothing: antialiased;
+}
+
+.main p.credit {
+  color: white;
+  text-align: end;
+  float: right;
+}
+
+.main p.dev {
+  color: white;
+  float: left;
+  text-align: start;
+}
+
+.cover {
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -999999;
+  position: absolute;
+}
+
+.cover .item {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  z-index: -999999;
+}
+
+.cover .item img {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  left: 0px;
+  top: auto;
+  right: auto;
+  bottom: auto;
+}
+
+.seven.offset-by-two.columns {
+  margin-top: 20px;
+  height: 90vh;
+}
+
+.seven.offset-by-two.columns .content {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.seven.offset-by-two.columns .content .messages {
+  height: auto;
+  max-height: calc(100% - 90px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.seven.offset-by-two.columns .content .messages::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.seven.offset-by-two.columns .content .messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.seven.offset-by-two.columns .content .messages ul li {
+  display: inline-block;
+  clear: both;
+  margin: 15px 15px 5px 15px;
+  width: calc(100% - 25px);
+  font-size: 0.9em;
+}
+
+.seven.offset-by-two.columns .content .messages ul li p {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  word-wrap: break-word;
+  max-width: 250px;
+  line-height: 130%;
+}
+
+.seven.offset-by-two.columns .content .messages ul li.reply p {
+  background: #435f7a;
+  color: #f5f5f5;
+}
+
+.seven.offset-by-two.columns .content .messages ul li.sent p {
+  background: #f5f5f5;
+  float: right;
+}
+
+.seven.offset-by-two.columns .content .message-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap {
+  position: relative;
+  padding: 10px;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap input {
+  float: left;
+  border: none;
+  width: calc(100% - 110px);
+  font-size: 0.8em;
+  color: #32465a;
+  margin-bottom: 0%;
+  margin-right: 10px;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap button {
+  width: 100px;
+  margin-bottom: 0%;
+  color: white;
+}
