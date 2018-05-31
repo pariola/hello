@@ -1,5 +1,17 @@
 "use strict";
 
+// ? Register Service Worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("../sw.js", { scope: "./" })
+    .then(reg => {
+      console.log("[SW] registered");
+    })
+    .catch(e => {
+      console.log("Service worker failed to register", e);
+    });
+}
+
 const { Component, h, render } = window.preact;
 
 class Chat extends Component {
