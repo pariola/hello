@@ -12,6 +12,19 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+// ? Ask for Notification Permission
+if (
+  Notification.permission !== "denied" ||
+  Notification.permission === "default"
+) {
+  Notification.requestPermission(function(permission) {
+    // If the user accepts, let's create a notification
+    if (permission === "granted") {
+      console.log(`Notification granted`);
+    }
+  });
+}
+
 const { Component, h, render } = window.preact;
 
 class Chat extends Component {

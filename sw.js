@@ -1,4 +1,4 @@
-importScripts("https://js.pusher.com/4.1/pusher.min.js");
+importScripts("https://js.pusher.com/4.2/pusher.worker.min.js");
 
 const cacheName = "sw_v1";
 const cacheFiles = [
@@ -14,7 +14,7 @@ const cacheFiles = [
   "https://cdnjs.cloudflare.com/ajax/libs/preact/8.2.9/preact.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
   "https://unpkg.com/axios/dist/axios.min.js",
-  "https://js.pusher.com/4.1/pusher.min.js"
+  "https://js.pusher.com/4.2/pusher.worker.min.js"
 ];
 
 // ? Listen for INSTALL event
@@ -32,7 +32,7 @@ this.addEventListener("install", e => {
 // ? Listen for ACTIVATE event
 this.addEventListener("activate", e => {
   console.log(`[SW] activated`);
-  event.waitUntil(clients.claim());
+  e.waitUntil(clients.claim());
 
   // ? Clear all old caches
   caches.keys().then(keys => {
@@ -49,39 +49,23 @@ this.addEventListener("activate", e => {
 
 // ? Listen for FETCH events
 this.addEventListener("fetch", e => {
-  console.log(`[SW] fetch called on ${e.request.url}`);
-
-  // * Skip Chat API
-  if (e.request.url === "https://hello-me.herokuapp.com/chat") {
-    return fetch(e.request);
-  } else {
-    e.respondWith(
-      caches.match(e.request).then(res => {
-        if (res) {
-          // ? Found a match then serve response
-          console.log(`[SW] serving ${e.request.url} from cache`);
-          return res;
-        }
-        // ? Clone request
-        const reqClone = e.request.clone();
-        // ? Try to fetch then cache
-        fetch(reqClone)
-          .then(response => {
-            // ? Clone response
-            const resClone = response.clone();
-            caches.open(cacheName).then(cache => {
-              console.log(`[SW] saving ${e.request.url} to cache`);
-              cache.put(e.request, resClone);
-              return response;
-            });
-          })
-          .catch(err => {
-            console.log(`[SW] failed to fetch ${e.request.url}`);
-            return err;
+  // console.log(`[SW] fetch called on ${e.request.url}`);
+  e.respondWith(
+    caches.match(e.request).then(res => {
+      return res
+        ? res
+        : fetch(e.request).then(r => {
+            if (e.request.url == "https://hello-me.herokuapp.com/chat") {
+              // * Send Notification
+              const options = { body: "data.message" };
+              self.registration.showNotification(
+                "New message(s) from Blessing 😉"
+              );
+            }
+            return r;
           });
-      })
-    );
-  }
+    })
+  );
 });
 
 // ? Initialize Pusher
@@ -91,8 +75,16 @@ var pusher = new Pusher("10027214367a0301fd21", {
 });
 
 // ? Listen for PUSH events
-var channel = pusher.subscribe("my-channel");
-channel.bind("my-event", function(data) {
-  console.log(data.message);
-  alert(data.message);
+var channel = pusher.subscribe("all");
+channel.bind("notification", function(data) {
+  const options = { body: data.message };
+  self.registration
+    .showNotification("Hello Blessing 😉", options)
+    .then(() => self.registration.getNotifications())
+    .then(notifications => {
+      setTimeout(
+        () => notifications.forEach(notification => notification.close()),
+        4000
+      );
+    });
 });
