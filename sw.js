@@ -1,3 +1,5 @@
+importScripts("https://js.pusher.com/4.1/pusher.min.js");
+
 const cacheName = "sw_v1";
 const cacheFiles = [
   "./",
@@ -31,7 +33,7 @@ this.addEventListener("install", e => {
 this.addEventListener("activate", e => {
   console.log(`[SW] activated`);
   event.waitUntil(clients.claim());
-    
+
   // ? Clear all old caches
   caches.keys().then(keys => {
     return Promise.all(
