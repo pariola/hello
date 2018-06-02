@@ -30,7 +30,8 @@ this.addEventListener("install", e => {
 // ? Listen for ACTIVATE event
 this.addEventListener("activate", e => {
   console.log(`[SW] activated`);
-
+  event.waitUntil(clients.claim());
+    
   // ? Clear all old caches
   caches.keys().then(keys => {
     return Promise.all(
