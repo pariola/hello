@@ -11,7 +11,8 @@ const cacheFiles = [
   "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/preact/8.2.9/preact.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
-  "https://unpkg.com/axios/dist/axios.min.js"
+  "https://unpkg.com/axios/dist/axios.min.js",
+  "https://js.pusher.com/4.1/pusher.min.js"
 ];
 
 // ? Listen for INSTALL event
@@ -78,4 +79,17 @@ this.addEventListener("fetch", e => {
       })
     );
   }
+});
+
+// ? Initialize Pusher
+var pusher = new Pusher("10027214367a0301fd21", {
+  cluster: "eu",
+  encrypted: true
+});
+
+// ? Listen for PUSH events
+var channel = pusher.subscribe("my-channel");
+channel.bind("my-event", function(data) {
+  console.log(data.message);
+  alert(data.message);
 });
