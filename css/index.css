@@ -1,235 +1,144 @@
 body {
-  font-family: "Muli", Times, "Times New Roman", serif;
-  color: #333;
-  font-size: 1.8em;
+  font-family: "Muli", "Source Sans Pro", sans-serif;
 }
 
-.container {
-  min-width: 90%;
-}
-blockquote {
-  border-left: 5px solid #ddd;
-  margin-left: 0;
-}
-article {
-  margin: 150px 0 50px;
-}
-article p a {
-  text-decoration: underline;
-}
-article img {
-  max-width: 100%;
-}
-code {
-  border: none;
-  background-color: transparent;
-}
-pre > code {
-  color: #ddd;
-}
-p > code,
-li > code {
-  background-color: #eee;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
-figure {
-  margin: 0 0 0 -20px;
-}
-ul,
-ol {
-  margin-left: 40px;
-  list-style-position: outside;
+.main {
+  justify-content: center;
+  min-height: 100vh;
+  letter-spacing: 0.1px;
+  color: #32465a;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  -webkit-font-smoothing: antialiased;
 }
 
-.title {
-  font-family: "Libre Baskerville", serif;
-  margin-bottom: 50px;
-  color: #111;
-}
-.libre {
-  font-family: "Libre Baskerville", serif;
-}
-.no-margin {
-  margin: 0;
-}
-#logo {
-  margin-top: 20px;
-}
-#logo a {
-  font-family: "Libre Baskerville", serif;
-  color: #463087;
-}
-nav {
-  text-align: right;
-  padding-top: 10px;
-}
-nav ul {
-  list-style: none;
-  margin: 0;
-}
-nav li {
-  display: inline;
-}
-nav li a {
-  display: inline-block;
-  padding: 10px 5px;
-  font-family: "Libre Baskerville", serif;
-  margin: 10px;
-  border-bottom: 1px solid #fff;
-}
-nav li a:hover,
-nav a.active {
-  border-bottom: 1px solid #e7e3f5;
-}
-nav a.active {
-  color: #444;
-}
-nav li a.bordered {
-  background-color: #7459c4;
-  border-radius: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #fcfcfe;
-}
-nav li a.bordered:hover {
-  background-color: #6042b9;
-}
-.title:after {
-  content: "";
-  display: block;
-  width: 150px;
-  padding-top: 30px;
-  border-bottom: 1px solid #ccc;
-}
-
-a {
-  color: #6042b9;
-  text-decoration: none;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-a:hover {
-  color: #7459c4;
-}
-#menu {
-  display: none;
-  cursor: pointer;
+.main p.credit {
+  color: white;
+  text-align: end;
   float: right;
-  color: #7459c4;
-  font-size: 2em;
-  padding-left: 10px;
-  text-align: center;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-}
-
-.colophon {
-  background-color: #f5f8fb;
-  padding: 40px 0;
-  border: solid #eee;
-  border-width: 1px 0;
-}
-.avi {
+.main p.dev {
+  color: white;
   float: left;
-  margin-right: 24px;
-  width: 48px;
-  border-radius: 50%;
-}
-.p-t-100 {
-  padding-top: 100px;
-}
-.p-t-40 {
-  padding-top: 40px;
-}
-.p-t-20 {
-  padding-top: 20px;
-}
-.m-t-20 {
-  margin-top: 20px !important;
-}
-.m-b-20 {
-  margin-bottom: 20px !important;
-}
-.m-b-40 {
-  margin-bottom: 40px;
+  text-align: start;
 }
 
-.label {
+.cover {
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -999999;
+  position: absolute;
+}
+
+.cover .item {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  z-index: -999999;
+}
+
+.cover .item img {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  left: 0px;
+  top: auto;
+  right: auto;
+  bottom: auto;
+}
+
+.seven.offset-by-two.columns {
+  margin-top: 20px;
+  height: 90vh;
+}
+
+.seven.offset-by-two.columns .content {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.seven.offset-by-two.columns .content .messages {
+  height: auto;
+  max-height: calc(100% - 90px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.seven.offset-by-two.columns .content .messages::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.seven.offset-by-two.columns .content .messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.seven.offset-by-two.columns .content .messages ul li {
   display: inline-block;
-  border-radius: 3px;
-  background-color: #d9e5f1;
-  padding: 0 7px;
-}
-a.label {
-  background-color: #ef6c7b;
-  color: #fff;
-}
-a.label:hover {
-  background-color: #e82f44;
+  clear: both;
+  margin: 15px 15px 5px 15px;
+  width: calc(100% - 25px);
+  font-size: 0.9em;
 }
 
-footer {
-  padding: 50px 0;
+.seven.offset-by-two.columns .content .messages ul li p {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  word-wrap: break-word;
+  max-width: 250px;
+  line-height: 130%;
 }
 
-@media screen and (max-width: 1000px) {
-  #menu {
-    display: block;
-  }
-  #logo {
-    width: 100%;
-  }
-  .title.p-t-100 {
-    padding-top: 40px;
-  }
-  nav {
-    display: none;
-  }
-  nav li {
-    display: block;
-    margin: 0;
-    text-align: left;
-  }
-  nav li a {
-    margin: 0;
-    display: block;
-    border-bottom: 1px solid #e7e3f5;
-  }
-  nav li a.bordered {
-    border-radius: 0;
-  }
-
-  article {
-    margin: 40px 0;
-  }
-  .colophon {
-    padding: 20px 0;
-  }
-  .avi {
-    float: none;
-    padding: 10px;
-  }
-  .author {
-    text-align: center;
-  }
-  .offset-by-three.column,
-  .offset-by-three.columns {
-    margin-left: 0;
-  }
-  .six.columns {
-    width: 100%;
-  }
+.seven.offset-by-two.columns .content .messages ul li.reply p {
+  background: #435f7a;
+  color: #f5f5f5;
 }
 
-@media screen and (min-width: 1000px) {
-  #menu {
-    display: none;
-  }
+.seven.offset-by-two.columns .content .messages ul li.sent p {
+  background: #f5f5f5;
+  float: right;
+}
+
+.seven.offset-by-two.columns .content .message-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap {
+  position: relative;
+  padding: 10px;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap input {
+  float: left;
+  border: none;
+  width: calc(100% - 110px);
+  font-size: 0.8em;
+  color: #32465a;
+  margin-bottom: 0%;
+  margin-right: 10px;
+}
+
+.seven.offset-by-two.columns .content .message-input .wrap button {
+  width: 100px;
+  margin-bottom: 0%;
+  color: white;
 }
